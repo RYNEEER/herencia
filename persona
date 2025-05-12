@@ -1,0 +1,96 @@
+class persona{
+     private nombre: string;
+     private apellido: string;
+     private genero: string;
+     private edad: number;
+     private estado_civil: string;
+
+     //Get y Set nombre
+     getNombre():string{
+        return this.nombre;
+     }
+
+     setNombre(nombre:string){
+        this.nombre=nombre;
+     }
+    
+     //Get y Set apellido
+     getApellido():string{
+        return this.apellido;
+     }
+
+     setApellido(apellido:string){
+        this.apellido=apellido;
+     }
+    //Get y Set genero
+     getGenero():string{
+        return this.genero;
+     }
+
+     setGenero(genero:string){
+        this.genero=genero;
+     }
+    //Get y Set edad
+     getEdad():number{
+        return this.edad;
+     }
+
+     setEdad(edad:number){
+        this.edad=edad;
+     }
+    //Get y Set estado civil
+     getEstado_Civil():string{
+        return this.estado_civil;
+     }
+
+     setEstado_Civil(estado_civil:string){
+        this.estado_civil=estado_civil;
+     }
+
+
+    constructor(nombre:string, apellido:string, genero:string, edad:number, estado_civil:string) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.genero = genero;
+        this.edad = edad;
+        this.estado_civil = estado_civil;
+    }
+
+    presentar():string{
+        return `Hola, soy ${this.nombre} ${this.apellido}, tengo ${this.edad} años, soy un ${this.genero} y mi estado civil es ${this.estado_civil}`
+    }
+
+}
+//FUERA DE LA CLASE
+class estudiante extends persona{
+    private carrera:string;
+
+    constructor(nombre:string, apellido:string, genero:string, edad:number, estado_civil:string, carrera:string){
+        super(nombre, apellido, genero, edad, estado_civil);
+        this.carrera = carrera;
+
+    }
+   
+
+    saludar():string{
+        return `Hola, soy ${this.getNombre()} ${this.getApellido()}, tengo ${this.getEdad()} años, soy un ${this.getGenero()} mi estado civil es ${this.getEstado_Civil()} y soy estudiante de la carrera de ${this.carrera}`
+    }
+}
+//FUERA DE LA CLASE
+class Docente extends persona{
+    private notas:number;
+    constructor(nombre:string, apellido:string, genero:string, edad:number, estado_civil:string, notas: number){
+        super(nombre, apellido, genero, edad, estado_civil);
+        this.notas = notas;
+    }
+    Notafinal():string{
+        return `El estudiante ${this.getNombre()} ${this.getApellido()}, de edad ${this.getEdad()} años, de genero ${this.getGenero()} y su estado civil es ${this.getEstado_Civil()} y sus respectivas notas son las siguientes ${this.notas}`
+    }
+}
+const luis = new persona(`luis`, `sanchez`, `femenino`, 22, `soltero`);
+const ricardo = new estudiante(`ricardo`, `milos`,`hombre`, 26, `casado`, `Ingenieria civil`);
+const panchana = new Docente (`Edgardo`, `Panchana`, `Hombre`, 38, `casado`, 10);
+
+console.log(luis.presentar());
+console.log(ricardo.saludar());
+console.log(panchana.Notafinal());
