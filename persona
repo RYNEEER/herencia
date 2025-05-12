@@ -1,4 +1,5 @@
 class persona{
+    // atributos privados de la clase principal
      private nombre: string;
      private apellido: string;
      private genero: string;
@@ -47,7 +48,7 @@ class persona{
         this.estado_civil=estado_civil;
      }
 
-
+     //ayuda inicializar los atributos de la clase, para asignarle los valores
     constructor(nombre:string, apellido:string, genero:string, edad:number, estado_civil:string) {
         this.nombre = nombre;
         this.apellido = apellido;
@@ -55,42 +56,57 @@ class persona{
         this.edad = edad;
         this.estado_civil = estado_civil;
     }
-
+    //es el metodo para esteblecer los valores a los atributos del metodo presentar 
     presentar():string{
         return `Hola, soy ${this.nombre} ${this.apellido}, tengo ${this.edad} años, soy un ${this.genero} y mi estado civil es ${this.estado_civil}`
     }
 
 }
 //FUERA DE LA CLASE
+//Clase hijo queesta heredando a clase persona
 class estudiante extends persona{
+    //atributo de la clase estudiante
     private carrera:string;
 
-    constructor(nombre:string, apellido:string, genero:string, edad:number, estado_civil:string, carrera:string){
+     constructor(nombre:string, apellido:string, genero:string, edad:number, estado_civil:string, carrera:string){
+        //superclase o clase principal, ayuda a heredar de la clase principal los atributos
         super(nombre, apellido, genero, edad, estado_civil);
+        //aqui se inicaliza el atributo de la clase estudiante
         this.carrera = carrera;
 
     }
    
-
+    //metodo saludar, este hace para que se asignen los valores a los atributos de la clase estudiante
     saludar():string{
         return `Hola, soy ${this.getNombre()} ${this.getApellido()}, tengo ${this.getEdad()} años, soy un ${this.getGenero()} mi estado civil es ${this.getEstado_Civil()} y soy estudiante de la carrera de ${this.carrera}`
     }
 }
+//Nueva clase hijo
 //FUERA DE LA CLASE
 class Docente extends persona{
+    //se asignan atributos a la clase docente
     private notas:number;
+    
+    //se crea un constructor para la clase docente
     constructor(nombre:string, apellido:string, genero:string, edad:number, estado_civil:string, notas: number){
+        //superclase o clase principal, ayuda a heredar de la clase principal los atributos
         super(nombre, apellido, genero, edad, estado_civil);
+        //aqui se inicaliza el atributo de la clase docente
         this.notas = notas;
     }
+
+        //metodo saludar, este hace para que se asignen los valores a los atributos de la clase docente
     Notafinal():string{
-        return `El estudiante ${this.getNombre()} ${this.getApellido()}, de edad ${this.getEdad()} años, de genero ${this.getGenero()} y su estado civil es ${this.getEstado_Civil()} y sus respectivas notas son las siguientes ${this.notas}`
+        return `Hola, soy el docente ${this.getNombre()} ${this.getApellido()}, de edad ${this.getEdad()} años, de genero ${this.getGenero()} mi estado civil es ${this.getEstado_Civil()} y sus respectivas notas son las siguientes ${this.notas}`
     }
 }
+
 const luis = new persona(`luis`, `sanchez`, `femenino`, 22, `soltero`);
+//se crea una constante, ejemplo "Luis", que seria el nombre de la constante seguido de un "= new" con el nombre de la clase a usar que este caso seria persona y a estos se les asignaria los valores de la clase
 const ricardo = new estudiante(`ricardo`, `milos`,`hombre`, 26, `casado`, `Ingenieria civil`);
 const panchana = new Docente (`Edgardo`, `Panchana`, `Hombre`, 38, `casado`, 10);
 
 console.log(luis.presentar());
+//aqui muestra por consola la clase luis, no olvidar colocar siempre parentesis
 console.log(ricardo.saludar());
 console.log(panchana.Notafinal());
